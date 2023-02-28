@@ -11,13 +11,14 @@ margin-right:16vw;
     padding-right:2vw;
     padding-top:2vh;
     border-radius:12px;
-    padding-bottom:3vh;
 }
 .creatorDiv{
     display:flex;
     justify-content:right;
     width:100%;
     margin-bottom:10vh;
+    margin-top:5vh;
+    padding-bottom:2vh;
 }
 .postedTime{
     margin-top:0px;

@@ -59,13 +59,13 @@ export default function ReadBlog({ id }: Iprops) {
             toast.error("Please Add Some Comment")
         } else {
             const commentHtml = convertToHtml(comment)
-            if (id){
+            if (id) {
                 dispatch(addComment(id, commentHtml, userInfo.authToken as string));
                 setTimeout(() => {
                     dispatch(fetchAllCommentByBlogId(id));
                 }, 2000);
             }
-             
+
         }
     }
 
@@ -75,27 +75,27 @@ export default function ReadBlog({ id }: Iprops) {
                 {currentBlogData ?
                     <div>
                         <div>
-                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentBlogData.blogTitle)  }} />
+                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentBlogData.blogTitle) }} />
                             {/* for security reasons using dom purify to sanitize the
                             html so that potential cross-site scripting attack can be prevented */}
                         </div>
                         <div>
                             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentBlogData.blogDescription) }} />
-                             {/* for security reasons using dom purify to sanitize the
+                            {/* for security reasons using dom purify to sanitize the
                             html so that potential cross-site scripting attack can be prevented */}
                         </div>
                     </div>
                     : ""}
-            </div>
-            {/* author name */}
-            <div>
-                <div className='creatorDiv'>
-                    <div>
-                        - Author:&nbsp;
-                    </div>
-                    <div>
-                        {currentBlogData?.userId.name}&nbsp;({currentBlogData?.userId.email})
-                        <p className='postedTime'>posted on:- {convertTime(currentBlogData?.createdAt)}</p>
+                {/* author name */}
+                <div>
+                    <div className='creatorDiv'>
+                        <div>
+                            - Author:&nbsp;
+                        </div>
+                        <div>
+                            {currentBlogData?.userId.name}&nbsp;({currentBlogData?.userId.email})
+                            <p className='postedTime'>posted on:- {convertTime(currentBlogData?.createdAt)}</p>
+                        </div>
                     </div>
                 </div>
             </div>
