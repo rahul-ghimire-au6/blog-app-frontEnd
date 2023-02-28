@@ -11,6 +11,7 @@ margin-right:16vw;
     padding-right:2vw;
     padding-top:2vh;
     border-radius:12px;
+    padding-bottom:3vh;
 }
 .creatorDiv{
     display:flex;
