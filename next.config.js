@@ -4,6 +4,10 @@ const nextConfig = {
   compiler: {
     // Enables the styled-components SWC transform
     styledComponents: true
+  },
+  env: {
+    // declare here all your variables
+    baseUrl: process.env.baseUrl,
   }
 }
 

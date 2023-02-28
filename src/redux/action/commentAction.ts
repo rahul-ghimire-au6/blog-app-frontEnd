@@ -3,6 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { commentActions } from '../slice/commentSlice';
 import { Dispatch } from '@reduxjs/toolkit'
 import Router from "next/router";
+import {baseUrl} from '../../utils/constants';
 
 interface errType {
     errMessage?: string
@@ -25,7 +26,7 @@ export const fetchAllCommentByBlogId = (blogId: string) => async (dispatch: Disp
     try {
         dispatch(commentActions.setLoading(true));
         const { data } = await axios.get(
-            `http://localhost:8080/comment/fetchAllCommentByBlogId/${blogId}`,
+            `${baseUrl}/comment/fetchAllCommentByBlogId/${blogId}`,
         );
         dispatch(commentActions.fetchAllComment(data.data));
     } catch (error) {
@@ -41,7 +42,7 @@ export const addComment = (blogId: string, commentData: string, authToken: strin
     try {
         dispatch(commentActions.setLoading(true));
         const { data } = await axios.post(
-            `http://localhost:8080/comment/addComment/${blogId}`,
+            `${baseUrl}/comment/addComment/${blogId}`,
             { commentData },
             {
                 headers: {

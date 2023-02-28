@@ -3,17 +3,20 @@ import axios, { AxiosError } from 'axios';
 import { userActions } from '../slice/userSlice';
 import { Dispatch } from '@reduxjs/toolkit'
 import Router from "next/router";
+import {baseUrl} from '../../utils/constants';
+// const baseUrl = process.env.baseUrl ?? "http://localhost:8080";
 
 interface errType {
     errMessage?: string
 }
+
 
 // register user
 export const registerUser = (name: string, email: string, password: string) => async (dispatch: Dispatch) => {
     try {
         dispatch(userActions.setLoading(true));
         const { data } = await axios.post(
-            `http://localhost:8080/user/register`,
+            `${baseUrl}/user/register`,
             { name, email, password },
         );
         dispatch(userActions.register(data));
@@ -34,7 +37,7 @@ export const loginUser = (email: string, password: string) => async (dispatch: D
     try {
         dispatch(userActions.setLoading(true));
         const { data } = await axios.post(
-            `http://localhost:8080/user/login`,
+            `${baseUrl}/user/login`,
             { email, password },
         );
         dispatch(userActions.login({ userName: data.data.userName, authToken: `Bearer ${data.data.authToken}` }));

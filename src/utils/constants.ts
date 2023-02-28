@@ -10,3 +10,5 @@ export const blogFacts = [
     "Blogging can Offer You New Opportunities.",
     "Blogging Have the Potential to Make Some Money."
 ]
+
+export const baseUrl = process.env.baseUrl ?? "http://localhost:8080";

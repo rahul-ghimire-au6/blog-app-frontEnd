@@ -3,6 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { blogActions } from '../slice/blogSlice';
 import { Dispatch } from '@reduxjs/toolkit'
 import Router from "next/router";
+import {baseUrl} from '../../utils/constants';
 
 interface errType {
     errMessage?: string
@@ -25,7 +26,7 @@ export const fetchAllBlog = () => async (dispatch: Dispatch) => {
     try {
         dispatch(blogActions.setLoading(true));
         const { data } = await axios.get(
-            `http://localhost:8080/blog/fetchAllBlog`,
+            `${baseUrl}/blog/fetchAllBlog`,
         );
         dispatch(blogActions.fetchAllBlogs(data.data));
     } catch (error) {
@@ -40,7 +41,7 @@ export const fetchBlogsByUserId = (authToken: string) => async (dispatch: Dispat
     try {
         dispatch(blogActions.setLoading(true));
         const { data } = await axios.get(
-            `http://localhost:8080/blog/fetchBlogsByUserId`, {
+            `${baseUrl}/blog/fetchBlogsByUserId`, {
             headers: {
                 Authorization: authToken
             }
@@ -61,7 +62,7 @@ export const createBlog = (blogTitle: string, blogDescription: string, authToken
     try {
         dispatch(blogActions.setLoading(true));
         const { data } = await axios.post(
-            `http://localhost:8080/blog/createBlog`,
+            `${baseUrl}/blog/createBlog`,
             { blogTitle, blogDescription },
             {
                 headers: {
