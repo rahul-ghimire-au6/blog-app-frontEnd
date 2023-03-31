@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Eslint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+        run: npm run lint
 
       - name: Build
         run: npm run build
